@@ -1,20 +1,25 @@
 import Section from 'components/Section';
 import { FeedbackOptionsPropTypes } from './FeedbackOptions.type';
+import css from './FeedbackOptions.module.css';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <Section title="Please leave feedback">
-      {Object.keys(options).map(key => (
-        <button
-          key={key}
-          type="button"
-          onClick={() => {
-            onLeaveFeedback(key);
-          }}
-        >
-          {key}
-        </button>
-      ))}
+      <ul className={css.list}>
+        {Object.keys(options).map(key => (
+          <li key={key}>
+            <button
+              type="button"
+              className={css.button}
+              onClick={() => {
+                onLeaveFeedback(key);
+              }}
+            >
+              {key}
+            </button>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
